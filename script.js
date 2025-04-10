@@ -219,81 +219,85 @@ document.addEventListener('DOMContentLoaded', function() {
     const inventoryData = [
         {
             name: "Land Rover Defender",
-            price: 125000,
+            price: 10400000,
             type: "suv",
             image: "130.avif",
             specs: "3.0L I6 • Automatic • Luxury SUV"
         },
         {
             name: "Mercedes-Maybach GLS",
-            price: 165000,
+            price: 13800000,
             type: "suv",
             image: "mayabch.jpg",
             specs: "4.0L V8 • Automatic • Ultra Luxury SUV"
         },
         {
             name: "Mercedes-AMG G63",
-            price: 175000,
+            price: 14600000,
             type: "suv",
-            image: "peakpx (2).jpg",
+            image: "https://images.unsplash.com/photo-1666624481302-fc5d1fc52d35",
             specs: "4.0L V8 Biturbo • AMG SPEEDSHIFT • Performance SUV"
         },
         {
             name: "Rolls-Royce Phantom VIII",
-            price: 485000,
+            price: 40500000,
             type: "sedan",
             image: "phantom.jpg",
             specs: "6.75L V12 • Automatic • Ultra Luxury"
         },
         {
             name: "BMW 7 Series",
-            price: 115000,
+            price: 9600000,
             type: "sedan",
-            image: "bm7.jpeg",
+            image: "x07.jpeg",
             specs: "4.4L V8 • xDrive • Luxury Sedan"
         },
         {
             name: "Bentley Bentayga",
-            price: 245000,
+            price: 20400000,
             type: "suv",
             image: "bentayaga.jpeg",
             specs: "4.0L V8 • All-Wheel Drive • Ultra Luxury SUV"
         },
         {
             name: "Audi RS Q8",
-            price: 125000,
+            price: 10400000,
             type: "suv",
             image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6",
             specs: "4.0L V8 • Quattro • Performance SUV"
         },
         {
             name: "Audi A8 L",
-            price: 105000,
+            price: 8800000,
             type: "sedan",
             image: "a8l.avif",
             specs: "3.0L V6 • Quattro • Luxury Sedan"
         }
     ];
 
-    // Populate Inventory Grid
+    // Update the price formatting in populateInventory function
     function populateInventory(cars) {
         const grid = document.getElementById('inventoryGrid');
         if (!grid) return;
         
         grid.innerHTML = '';
         cars.forEach(car => {
+            const formattedPrice = car.price >= 10000000 
+                ? `₹${(car.price/10000000).toFixed(2)} Crore`
+                : `₹${(car.price/100000).toFixed(2)} Lakh`;
+            
             grid.innerHTML += `
                 <div class="car-card">
                     <img src="${car.image}" alt="${car.name}" loading="lazy">
                     <h3>${car.name}</h3>
-                    <p class="price">$${car.price.toLocaleString()}</p>
+                    <p class="price">${formattedPrice}</p>
                     <p class="specs">${car.specs}</p>
                     <button class="select-btn">Learn More</button>
                 </div>
             `;
         });
 
-        // Reattach event listeners to new buttons
+        // Reattach event listeners
         const buttons = grid.querySelectorAll('.select-btn');
         buttons.forEach(button => {
             button.addEventListener('click', showCarDetails);
