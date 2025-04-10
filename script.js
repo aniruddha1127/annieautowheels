@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: "Mercedes-AMG G63",
             price: 14600000,
             type: "suv",
-            image: "https://images.unsplash.com/photo-1666624481302-fc5d1fc52d35",
+            image: "peakpx (2).jpg",
             specs: "4.0L V8 Biturbo • AMG SPEEDSHIFT • Performance SUV"
         },
         {
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: "BMW 7 Series",
             price: 9600000,
             type: "sedan",
-            image: "x07.jpeg",
+            image: "bm7.jpeg",
             specs: "4.4L V8 • xDrive • Luxury Sedan"
         },
         {
