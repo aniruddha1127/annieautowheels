@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: "Mercedes-AMG G63",
             price: 14600000,
             type: "suv",
-            image: "peakpx (2).jpg",
+            image: "peakpx (2).jpg",  // Updated image path
             specs: "4.0L V8 Biturbo • AMG SPEEDSHIFT • Performance SUV"
         },
         {
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: "BMW 7 Series",
             price: 9600000,
             type: "sedan",
-            image: "bm7.jpeg",
+            image: "bm7.jpeg",  // Updated image path
             specs: "4.4L V8 • xDrive • Luxury Sedan"
         },
         {
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
             name: "Audi RS Q8",
             price: 10400000,
             type: "suv",
-            image: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6",
+            image: "q8.webp",
             specs: "4.0L V8 • Quattro • Performance SUV"
         },
         {
