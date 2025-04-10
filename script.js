@@ -10,88 +10,95 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Function to show car details in a popup
+// Update carInfo object to include Indian prices
+const carInfo = {
+    'Land Rover Defender': {
+        price: '₹1.04 Crore',
+        engine: '3.0L I6 Twin-Turbo',
+        power: '395 hp',
+        torque: '406 lb-ft',
+        acceleration: '0-60 mph in 5.8s',
+        features: 'All-Terrain Progress Control, Configurable Terrain Response, 360° Camera',
+        interior: 'Premium leather seats, 10-inch Touchscreen, Meridian™ Sound System'
+    },
+    'Rolls-Royce Phantom VIII': {
+        price: '₹4.05 Crore',
+        engine: '6.75L V12 Twin-Turbo',
+        power: '563 hp',
+        torque: '664 lb-ft',
+        acceleration: '0-60 mph in 5.1s',
+        features: 'Starlight Headliner, Rear Theater Configuration, Power Privacy Curtains',
+        interior: 'Hand-crafted wood panels, Bespoke Audio System, Rear Picnic Tables'
+    },
+    'Mercedes-Maybach GLS': {
+        price: '₹1.38 Crore',
+        engine: '4.0L V8 Biturbo',
+        power: '550 hp',
+        torque: '538 lb-ft',
+        acceleration: '0-60 mph in 4.8s',
+        features: 'E-Active Body Control, Executive Rear Seats, Burmester® 4D Surround Sound',
+        interior: 'Nappa Leather, Ambient Lighting, Champagne Flute Holder'
+    },
+    'Mercedes-AMG G63': {
+        price: '₹1.46 Crore',
+        engine: '4.0L V8 Biturbo',
+        power: '577 hp',
+        torque: '627 lb-ft',
+        acceleration: '0-60 mph in 4.5s',
+        features: 'AMG RIDE CONTROL, Three Differential Locks, Dual 12.3-inch Displays',
+        interior: 'AMG Performance Seats, Carbon Fiber Trim, Ambient Lighting'
+    },
+    'BMW 7 Series': {
+        price: '₹96 Lakh',
+        engine: '4.4L V8 TwinPower Turbo',
+        power: '523 hp',
+        torque: '553 lb-ft',
+        acceleration: '0-60 mph in 4.2s',
+        features: 'Executive Lounge, Sky Lounge Panoramic Roof, BMW Theater Screen',
+        interior: 'Merino Leather, Crystal Controls, 36-Speaker Bowers & Wilkins System'
+    },
+    'Bentley Bentayga': {
+        price: '₹2.04 Crore',
+        engine: '4.0L V8 Twin-Turbo',
+        power: '542 hp',
+        torque: '568 lb-ft',
+        acceleration: '0-60 mph in 4.4s',
+        features: 'All-Terrain Specification, Night Vision, Head-up Display',
+        interior: 'Handcrafted Wood Veneers, Naim Audio System, Rear Entertainment'
+    },
+    'Audi RS Q8': {
+        price: '₹1.04 Crore',
+        engine: '4.0L V8 TFSI',
+        power: '591 hp',
+        torque: '590 lb-ft',
+        acceleration: '0-60 mph in 3.7s',
+        features: 'Quattro Sport Differential, All-wheel Steering, HD Matrix LED Headlights',
+        interior: 'RS Sport Seats, Alcantara Headliner, Bang & Olufsen 3D Sound'
+    },
+    'Audi A8 L': {
+        price: '₹88 Lakh',
+        engine: '3.0L V6 TFSI',
+        power: '335 hp',
+        torque: '369 lb-ft',
+        acceleration: '0-60 mph in 5.6s',
+        features: 'Predictive Active Suspension, Dual-Pane Acoustic Glass, Remote Parking',
+        interior: 'Valcona Leather, Rear Relaxation Seat, Ambient Light Plus'
+    }
+};
+
+// Update showCarDetails function to display Indian prices
 function showCarDetails(event) {
     const card = event.target.closest('.car-card');
     const name = card.querySelector('h3').textContent;
     const specs = card.querySelector('.specs').textContent;
-    const price = card.querySelector('.price').textContent;
-
-    // Additional car information object
-    const carInfo = {
-        'Land Rover Defender': {
-            engine: '3.0L I6 Twin-Turbo',
-            power: '395 hp',
-            torque: '406 lb-ft',
-            acceleration: '0-60 mph in 5.8s',
-            features: 'All-Terrain Progress Control, Configurable Terrain Response, 360° Camera',
-            interior: 'Premium leather seats, 10-inch Touchscreen, Meridian™ Sound System'
-        },
-        'Rolls-Royce Phantom VIII': {
-            engine: '6.75L V12 Twin-Turbo',
-            power: '563 hp',
-            torque: '664 lb-ft',
-            acceleration: '0-60 mph in 5.1s',
-            features: 'Starlight Headliner, Rear Theater Configuration, Power Privacy Curtains',
-            interior: 'Hand-crafted wood panels, Bespoke Audio System, Rear Picnic Tables'
-        },
-        'Mercedes-Maybach GLS': {
-            engine: '4.0L V8 Biturbo',
-            power: '550 hp',
-            torque: '538 lb-ft',
-            acceleration: '0-60 mph in 4.8s',
-            features: 'E-Active Body Control, Executive Rear Seats, Burmester® 4D Surround Sound',
-            interior: 'Nappa Leather, Ambient Lighting, Champagne Flute Holder'
-        },
-        'Mercedes-AMG G63': {
-            engine: '4.0L V8 Biturbo',
-            power: '577 hp',
-            torque: '627 lb-ft',
-            acceleration: '0-60 mph in 4.5s',
-            features: 'AMG RIDE CONTROL, Three Differential Locks, Dual 12.3-inch Displays',
-            interior: 'AMG Performance Seats, Carbon Fiber Trim, Ambient Lighting'
-        },
-        'BMW 7 Series': {
-            engine: '4.4L V8 TwinPower Turbo',
-            power: '523 hp',
-            torque: '553 lb-ft',
-            acceleration: '0-60 mph in 4.2s',
-            features: 'Executive Lounge, Sky Lounge Panoramic Roof, BMW Theater Screen',
-            interior: 'Merino Leather, Crystal Controls, 36-Speaker Bowers & Wilkins System'
-        },
-        'Bentley Bentayga': {
-            engine: '4.0L V8 Twin-Turbo',
-            power: '542 hp',
-            torque: '568 lb-ft',
-            acceleration: '0-60 mph in 4.4s',
-            features: 'All-Terrain Specification, Night Vision, Head-up Display',
-            interior: 'Handcrafted Wood Veneers, Naim Audio System, Rear Entertainment'
-        },
-        'Audi RS Q8': {
-            engine: '4.0L V8 TFSI',
-            power: '591 hp',
-            torque: '590 lb-ft',
-            acceleration: '0-60 mph in 3.7s',
-            features: 'Quattro Sport Differential, All-wheel Steering, HD Matrix LED Headlights',
-            interior: 'RS Sport Seats, Alcantara Headliner, Bang & Olufsen 3D Sound'
-        },
-        'Audi A8 L': {
-            engine: '3.0L V6 TFSI',
-            power: '335 hp',
-            torque: '369 lb-ft',
-            acceleration: '0-60 mph in 5.6s',
-            features: 'Predictive Active Suspension, Dual-Pane Acoustic Glass, Remote Parking',
-            interior: 'Valcona Leather, Rear Relaxation Seat, Ambient Light Plus'
-        }
-    };
-
-    const carDetails = carInfo[name] || {};
+    const carDetails = carInfo[name];
 
     const popup = `
         <div class="popup">
             <div class="popup-content">
                 <h2>${name}</h2>
                 <div class="car-details">
-                    <p class="price-tag">${price}</p>
+                    <p class="price-tag">${carDetails.price}</p>
                     <p class="specs-tag">${specs}</p>
                     
                     <div class="details-grid">
